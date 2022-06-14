@@ -54,13 +54,35 @@ router.get('/:id', async(req, res) => {
     // create a category
   });
 
-router.put('/:id', (req, res) => {
 
+
+
+
+
+  router.put('/:id', function(req, res) {
+    Category.update(req.body,{
+      where:{
+        id: req.params.id,
+      },
+    })
+      .then(result => res.status(200).send(result))
+      .catch(err => res.status(500).send(err));
+  });
 
 
 
   // update a category by its `id` value
-});
+
+
+
+
+
+
+
+
+
+
+
 
 router.delete('/:id', async (req, res) => {
   try {
